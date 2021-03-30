@@ -12,7 +12,7 @@
       </div>
       <div>
         <div class="line-label">Speaker</div>
-        {{ clip_file.split("__")[0] }}
+        {{ speaker }}
       </div>
     </div>
     <section>
@@ -36,6 +36,22 @@ export default {
       Vowel_quality: null,
       type: null,
     };
+  },
+  computed: {
+    speaker() {
+      const code = this.clip_file.split("__")[0];
+      const description = {
+        AEA: "Mogadishu, male, ca 30 y.o.",
+        AS: "Mogadishu, male, ca 30 y.o.",
+        HM: "Beledweyne, male, ca 30 y.o.",
+        JAN: "Jigjiga, male, ca 30 y.o.",
+        MAA: "Mogadishu, male, ca 30 y.o.",
+        MAM: "Djibouti, male, ca 30 y.o.",
+        MO: "Kismayo, male, ca 30 y.o.",
+        SSJ: "Mogadishu, female, ca 30 y.o.",
+      }[code];
+      return `${code}: ${description}`;
+    },
   },
   watch: {
     tokenId: {
